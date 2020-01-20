@@ -1,4 +1,4 @@
-const emptySpaceChar = '.';
+const spaceChar = '.';
 const blockChar = '█';
 
 board = {
@@ -20,9 +20,7 @@ board = {
 	init: function() {
 		console.log('Initialising board.')
 		this.board = Array(this.boardSize.y).fill( 
-			Array(this.boardSize.x).fill (
-				emptySpaceChar
-			)
+			Array(this.boardSize.x).fill(0)
 		)
 	},
 
@@ -42,7 +40,7 @@ board = {
 			outputString += '│'
 			// Columns from left to right
 			for (let x = 0; x < this.board[y].length; x++) {
-				outputString += this.board[y][x]
+				outputString += this.board[y][x] ? blockChar : spaceChar
 			}
 			outputString += '│\n';
 		}
@@ -58,6 +56,44 @@ board = {
 	}
 }
 
+blocks = [
+	// T
+	[
+		[1,1,1],
+		[0,1,0]
+	],
+	// S
+	[
+		[0,1,1],
+		[1,1,0]
+	],
+	// Z
+	[
+		[1,1,0],
+		[0,1,1]
+	],
+	// L
+	[
+		[1,1,1],
+		[1,0,0]
+	],
+	// J
+	[
+		[1,1,1],
+		[0,0,1]
+	],
+	// O
+	[
+		[1,1],
+		[1,1]
+	],
+	// I
+	[
+		[1,1,1,1]
+	]
+]
+
 board.init()
 
 console.log(board.printBoard());
+console.log(blocks)
